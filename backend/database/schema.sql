@@ -1,11 +1,6 @@
--- Restaurant Reservation System Database Schema
--- For XAMPP MySQL Database
-
--- Create database
 CREATE DATABASE IF NOT EXISTS restaurant_reservation;
 USE restaurant_reservation;
 
--- Users table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -20,7 +15,6 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_deleted (deleted_at)
 );
 
--- Tables table
 CREATE TABLE IF NOT EXISTS restaurant_tables (
     id INT AUTO_INCREMENT PRIMARY KEY,
     table_number VARCHAR(50) NOT NULL UNIQUE,
@@ -34,7 +28,6 @@ CREATE TABLE IF NOT EXISTS restaurant_tables (
     INDEX idx_deleted (deleted_at)
 );
 
--- Reservations table
 CREATE TABLE IF NOT EXISTS reservations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(255) NOT NULL,
@@ -57,7 +50,6 @@ CREATE TABLE IF NOT EXISTS reservations (
     INDEX idx_deleted (deleted_at)
 );
 
--- Insert sample tables
 INSERT INTO restaurant_tables (table_number, capacity, location, status) VALUES
 ('T1', 2, 'indoor', 'available'),
 ('T2', 4, 'indoor', 'available'),
@@ -68,6 +60,3 @@ INSERT INTO restaurant_tables (table_number, capacity, location, status) VALUES
 ('T7', 4, 'terrace', 'available'),
 ('T8', 6, 'bar', 'available')
 ON DUPLICATE KEY UPDATE table_number=table_number;
-
--- Note: Run the create-admin.js script to create default users with properly hashed passwords
--- Command: cd backend && node scripts/create-admin.js
