@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS restaurant_tables (
     INDEX idx_status (status),
     INDEX idx_deleted (deleted_at)
 );
-
 CREATE TABLE IF NOT EXISTS reservations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(255) NOT NULL,
@@ -48,6 +47,33 @@ CREATE TABLE IF NOT EXISTS reservations (
     INDEX idx_date (reservation_date),
     INDEX idx_status (status),
     INDEX idx_deleted (deleted_at)
+);
+
+INSERT INTO reservations (customer_name, customer_email, customer_phone, reservation_date,  reservation_time, guests,  table_id, status,  special_requests, created_by)
+VALUES
+(
+    'Juan Perez',
+    'juan.perez@gmail.com',
+    '70012345',
+    '2025-01-15',
+    '19:00:00',
+    4,
+    2,
+    'confirmed',
+    'Mesa cerca de la ventana',
+    1
+),
+(
+    'María Aguilar',
+    'maria.aguilar@gmail.com',
+    '70123456',
+    '2025-01-16',
+    '20:30:00',
+    2,
+    1,
+    'pending',
+    'Celebración de cumpleanos',
+    1
 );
 
 INSERT INTO users (name, email, password, role, status)
