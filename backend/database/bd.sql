@@ -50,6 +50,15 @@ CREATE TABLE IF NOT EXISTS reservations (
     INDEX idx_deleted (deleted_at)
 );
 
+INSERT INTO users (name, email, password, role, status)
+VALUES (
+    'Admin',
+    'admin@restaurant.com',
+    '$2b$10$gN31wkvTCI7AhPLDyXblWOB5CklG57FFpz03dnWh6WBtGydkck606',
+    'admin',
+    'active'
+);
+
 INSERT INTO restaurant_tables (table_number, capacity, location, status) VALUES
 ('T1', 2, 'indoor', 'available'),
 ('T2', 4, 'indoor', 'available'),
